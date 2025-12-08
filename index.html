@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    <style>
+        * {
+            justify-content: center;
+
+        }
+        body {
+            background: black;
+            margin: 0;
+        }
+
+
+        h3:hover {
+            text-decoration: underline;
+            font-weight: bold;
+            text-shadow: 0px 10px 10px blue;
+            font-size: 4rem;
+            color: white;
+        }
+        #cont {
+            background-image: url('peep.png');
+            width: 98%;
+            background-position: center;
+            margin: auto;
+            height: 80vh;
+            border: none;
+            border-radius: 20px;
+
+        }
+        input {
+            padding: 10px;
+            width: 100%;
+            padding: 30px;
+            padding-right: 20px
+            margin: 10px;
+            border: solid 2px blue;
+            border-radius: 10px;
+        }
+
+        input:hover {
+            border-color: red;
+        }
+
+        button:hover {
+            background: hsl(1 , 1% , 20%);
+        }
+
+
+
+
+        #buts {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 5px;
+            padding: 10px;
+        }
+        button {
+            background: black;
+            border: solid 1px blue;
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow-x: scroll;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            font-size: 2rem;
+        }
+
+        audio {
+            margin: 20px;
+            width: 50%;
+        }
+        #songs {
+            
+            background: blue;
+            width: 70%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translateX(-150%);
+            transition: transform 0.4s ease;
+        }
+
+        #songs.show {
+            transform: translateX(0);
+        }
+    </style>
+    <title>ACCOUNTING CALCULATOR</title>
+</head>
+<body>
+    <div id="cont">
+        <input type="text" id="dis" readonly>
+        <div id="buts">
+            <button onclick="append('7')">7</button>
+            <button onclick="append('8')">8</button>
+            <button onclick="append('9')">9</button>
+            <button onclick="append('+')">+</button>
+            <button onclick="append('4')">4</button>
+
+            <button onclick="append('5')">5</button>
+            <button onclick="append('6')">6</button>
+            <button onclick="append('-')">-</button>
+            <button onclick="append('1')">1</button>
+
+            <button onclick="append('2')">2</button>
+            <button onclick="append('3')">3</button>
+            <button onclick="append('*')">*</button>
+            <button onclick="append('0')">0</button>
+
+            <button onclick="append('.')">.</button>
+            <button onclick="append('/')">/</button>
+            
+            <button id="cl">CL</button>
+            <button id="calc">=</button><h3>AURA CALC</h3>
+            <button id="gs">mp3s</button>
+        </div>
+
+    </div>
+    <div id="songs">
+        <audio src="r.mp3" controls="on">Music</audio>
+        <audio src="r1.mp3" controls="on">Music</audio>
+        <audio src="r2.mp3" controls="on">Music</audio>
+        <audio src="r3.mp3" controls="on">Music</audio>
+        <p>By Bonsu</p>
+    </div>
+
+    <script>
+        const display = document.getElementById('dis');
+        display.style.fontWeight = 'bold';
+        display.style.fontSize = '2rem';
+
+        function append (input) {
+            display.value += input;
+        }
+
+        let calc = document.getElementById('calc');
+        calc.onclick = function () {
+        
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = "Error";
+            }
+        }
+
+        document.getElementById('cl').onclick = function () {
+            display.value = "";
+        }
+
+        let songs = document.getElementById('songs');
+        
+        document.getElementById('gs').onclick = function () {
+          songs.classList.toggle('show');
+        }
+    </script>
+</body>
+
+</html>
